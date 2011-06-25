@@ -1,0 +1,26 @@
+
+=Pure JavaScript 3D Engine=
+
+This simple javascript renders triangle strip based geometry on a canvas element. It uses a simple perspective 
+projection to create the illusion of 3D. It doesn't do backface culling or lighting as the design is really not
+amenable to those kinds of additions.
+
+It was fun developing this little prototype and making it was really educational.
+
+Enjoy!
+
+=System Design=
+
+The engine is really simple and consists of a main "scene" object (Engine) in which geometry (Objects) can be
+registered. After registration these objects will be .update()-ed each tick after which they are drawn. 
+
+The perspective formula used is the oldie, but goodie, for each (x,y,z) in "object space", the screen coordinates 
+are: 
+	x'screen = x'object / z
+	y'screen = y'object / z
+
+currently the cube is the only primitive (working and available) in the engine, and I have no plans to add to this.
+
+tags: OO Javascript, 3D Math, Canvas.
+
+*this software is released under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 Netherlands License*

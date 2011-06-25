@@ -1,0 +1,63 @@
+<html>
+	<head>
+		<title>3D Engine in pure JavaScript</title>
+
+		<script type="text/javascript" src="js/Point.js" ></script>
+		<script type="text/javascript" src="js/Triangle.js" ></script>
+		<script type="text/javascript" src="js/Matrix.js" ></script>
+		<script type="text/javascript" src="js/Object.js" ></script>
+
+		<script type="text/javascript" src="js/Cube.js" ></script>
+		<script type="text/javascript" src="js/Pyramid.js" ></script>
+
+		<script type="text/javascript" src="js/Engine.js" ></script>
+
+		<style>
+			/* http://beta.dailycolorscheme.com/archive/2006/09/16 */
+			body {
+				background: #CBCB9C;
+			}
+
+			#canvas {
+				width:  640px;
+				height: 480px;
+				background: #eeeedf;
+				border: 1px inset #111;
+			}
+
+			#wrapper {
+				text-align: center;
+			}
+			#wrapper p {
+				width: 40%;
+				margin: 0 auto;
+				text-align: justify;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<canvas id="canvas"></canvas>
+			<br/>
+			<button onclick="engine.run()"  >start</button>
+			<button onclick="engine.stop()" > stop</button>
+		</div>
+		<script type="text/javascript">		
+			engine = new Engine('canvas');
+
+			cube = cube.scale(40,40,40);
+
+			var k = Math.PI/90;
+			var j = 0;
+			cube.update = function() {
+				j++;
+				r = xrot(j*k,k,k);
+				r = r.mmultiply(yrot(k,j*k,k));
+				r = r.mmultiply(zrot(k,k,j*k));
+				return this.multiply(r);
+			}
+
+			engine.register(cube);		
+		</script>
+	</body>	
+</html>
